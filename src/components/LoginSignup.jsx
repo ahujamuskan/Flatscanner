@@ -40,7 +40,9 @@ function LoginSignup () {
         const result = await response.json();
   
         if (response.ok) {
-          localStorage.setItem("userId", result.user_id);
+          // Store userId and userEmail in localStorage
+          localStorage.setItem("userId", result.user_id); // Save userId
+          localStorage.setItem("userEmail", formData.email); // Save email
           navigate("/home");
         } else {
           setError(result.message || "Something wrong with your email or password.");
@@ -51,7 +53,7 @@ function LoginSignup () {
         setLoading(false);  
       }
     };
-  
+    
     return (
       <div className="split-layout">
         <div className="left-section">
